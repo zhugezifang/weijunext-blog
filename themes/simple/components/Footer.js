@@ -21,7 +21,7 @@ export const Footer = (props) => {
                 {/* <a href="#" className="text-black no-underline hover:underline">Privacy Policy</a> */}
                 {BLOG.BEI_AN && (<a href="https://beian.miit.gov.cn/" className="text-black dark:text-gray-200 no-underline hover:underline ml-4">{BLOG.BEI_AN} </a>)}
                 <span className='no-underline ml-4'>
-                    Powered by
+                    Thanks for
                     <a href="https://github.com/tangly1024/NotionNext" className=' hover:underline'> NotionNext {BLOG.VERSION}  </a>
                 </span>
             </div>
