@@ -4,7 +4,7 @@
 - [Creating new themes](#creating-new-themes)
 - [Adding localizations](#adding-localizations)
 
-Thanks for considering to contribute!
+Thanks to considering to contribute!
 
 ## Setup
 
