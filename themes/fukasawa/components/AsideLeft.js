@@ -12,6 +12,7 @@ import SocialButton from './SocialButton'
 import { useFukasawaGlobal } from '..'
 import CONFIG from '@/themes/fukasawa/config'
 import { AdSlot } from '@/components/GoogleAdsense'
+import BLOG from '@/blog.config'
 
 // import { debounce } from 'lodash'
 // import { useEffect } from 'react'
@@ -83,8 +84,11 @@ function AsideLeft(props) {
                 <Announcement post={notice} />
             </section>
 
-            <section>
-                 <AdSlot type='in-article'/>
+      <section>
+        {
+          BLOG.ADSENSE_GOOGLE_ID ? <AdSlot type='in-article'/> : <></>
+        }
+
             </section>
 
             {router.asPath !== '/tag' && <section className='flex flex-col'>
