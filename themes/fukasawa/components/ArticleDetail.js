@@ -8,6 +8,7 @@ import ArticleAround from './ArticleAround'
 import { AdSlot } from '@/components/GoogleAdsense'
 import LazyImage from '@/components/LazyImage'
 import { formatDateFmt } from '@/lib/formatDate'
+import CONFIG from '../config'
 
 /**
  *
@@ -23,7 +24,7 @@ export default function ArticleDetail(props) {
   }
   return (
     <div id="container" className="max-w-5xl overflow-x-auto flex-grow mx-auto w-screen md:w-full ">
-      {post?.type && !post?.type !== 'Page' && post?.pageCover && (
+      {CONFIG.POST_HEADER_IMAGE_VISIBLE && post?.type && !post?.type !== 'Page' && post?.pageCover && (
         <div className="w-full relative md:flex-shrink-0 overflow-hidden">
           <LazyImage alt={post.title} src={post?.pageCover} className='object-center w-full' />
         </div>

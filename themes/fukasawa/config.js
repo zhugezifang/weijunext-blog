@@ -4,6 +4,8 @@ const CONFIG = {
   POST_LIST_COVER_FORCE: false, // 即使没有封面也将站点背景图设置为封面
   POST_LIST_PREVIEW: false, // 显示文章预览
 
+  POST_HEADER_IMAGE_VISIBLE: false,
+
   // 菜单
   MENU_CATEGORY: true, // 显示分类
   MENU_TAG: true, // 显示标签
