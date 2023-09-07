@@ -86,7 +86,7 @@ function AsideLeft(props) {
 
       <section>
         {
-          BLOG.ADSENSE_GOOGLE_ID ? <AdSlot type='in-article'/> : <></>
+          BLOG.ADSENSE_GOOGLE_ID && BLOG.SHOW_ADSENSE ? <AdSlot type='in-article'/> : <></>
         }
 
             </section>
