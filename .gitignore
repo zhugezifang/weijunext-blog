@@ -39,7 +39,8 @@ yarn-error.log*
 /pnpm-lock.yaml
 .idea
 .vscode
-
+.env.local
+.env
 
 # sitemap
 /public/robots.txt
