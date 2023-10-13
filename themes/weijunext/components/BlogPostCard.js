@@ -30,7 +30,7 @@ const BlogPostCard = ({ index, post, showSummary, siteInfo }) => {
         data-aos-once="false"
         data-aos-anchor-placement="top-bottom"
         id="blog-post-card"
-        className={`group md:h-56 w-full flex justify-between md:flex-row flex-col-reverse ${
+        className={`group md:h-56 w-full flex justify-between md:flex-row flex-col ${
           CONFIG.POST_LIST_IMG_CROSSOVER && index % 2 === 1
             ? 'md:flex-row-reverse'
             : ''
