@@ -1,6 +1,5 @@
-import React from 'react'
-import Link from 'next/link'
 import BLOG from '@/blog.config'
+import Link from 'next/link'
 /**
  * 博客归档列表
  * @param posts 所有文章
@@ -32,10 +31,9 @@ const BlogPostArchive = ({ posts = [], archiveTitle }) => {
                 <Link
                   href={`${BLOG.SUB_PATH}/${post.slug}`}
                   passHref
-                  className="dark:text-gray-400  dark:hover:text-indigo-300 overflow-x-hidden hover:underline cursor-pointer text-gray-600">
-
+                  className="dark:text-gray-400  dark:hover:text-indigo-300 overflow-x-hidden hover:underline cursor-pointer text-gray-600"
+                >
                   {post.title}
-
                 </Link>
               </div>
             </li>

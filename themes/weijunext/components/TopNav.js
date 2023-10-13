@@ -146,40 +146,37 @@ const TopNav = props => {
   )
 
   return (
-    <div id="top-nav" className="z-40">
+    <header
+      className="sticky top-0 z-50 font-bold bg-white bg-opacity-70 backdrop-filter backdrop-blur-lg backdrop-saturate-200 border-b-[0.5px] border-b-true-gray-100"
+      dark="bg-true-gray-900/70 border-b-true-gray-800"
+      data-aos="fade-down"
+      id="navbar"
+    >
       <SearchDrawer cRef={searchDrawer} slot={searchDrawerSlot} />
 
       {/* 导航栏 */}
-      <div
-        id="sticky-nav"
-        style={{ backdropFilter: 'blur(3px)' }}
-        className={
-          'top-0 duration-300 transition-all  shadow-none fixed bg-none dark:bg-hexo-black-gray dark:text-gray-200 text-black w-full z-20 transform border-transparent dark:border-transparent'
-        }
-      >
-        <div className="w-full flex justify-between items-center px-4 py-2">
-          <div className="flex">
-            <Logo {...props} />
-          </div>
+      <div className="w-full flex items-center justify-between px-6 py-3 mx-auto lg:px-11 lg:w-screen-lg whitespace-nowrap">
+        <div className="z-50">
+          <Logo {...props} />
+        </div>
 
-          {/* 右侧功能 */}
-          <div className="mr-1 justify-end items-center ">
-            <div className="hidden lg:flex">
-              {' '}
-              <MenuListTop {...props} />
-            </div>
-            <div
-              onClick={toggleMenuOpen}
-              className="w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden"
-            >
-              {isOpen
-                ? (
-                <i className="fas fa-times" />
-                  )
-                : (
-                <i className="fas fa-bars" />
-                  )}
-            </div>
+        {/* 右侧功能 */}
+        <div className="mr-1 justify-end items-center ">
+          <div className="hidden lg:flex">
+            {' '}
+            <MenuListTop {...props} />
+          </div>
+          <div
+            onClick={toggleMenuOpen}
+            className="w-8 justify-center items-center h-8 cursor-pointer flex lg:hidden"
+          >
+            {isOpen
+              ? (
+              <i className="fas fa-times" />
+                )
+              : (
+              <i className="fas fa-bars" />
+                )}
           </div>
         </div>
       </div>
@@ -188,7 +185,7 @@ const TopNav = props => {
       <SideBarDrawer isOpen={isOpen} onClose={toggleSideBarClose}>
         <SideBar {...props} />
       </SideBarDrawer>
-    </div>
+    </header>
   )
 }
 

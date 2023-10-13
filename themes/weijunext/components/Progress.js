@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
 import { isBrowser } from '@/lib/utils'
+import { useEffect, useState } from 'react'
 
 /**
  * 顶部页面阅读进度条
@@ -10,7 +10,8 @@ const Progress = ({ targetRef, showPercent = true }) => {
   const currentRef = targetRef?.current || targetRef
   const [percent, changePercent] = useState(0)
   const scrollListener = () => {
-    const target = currentRef || (isBrowser && document.getElementById('article-wrapper'))
+    const target =
+      currentRef || (isBrowser && document.getElementById('article-wrapper'))
     if (target) {
       const clientHeight = target.clientHeight
       const scrollY = window.pageYOffset

@@ -1,6 +1,6 @@
+import { useGlobal } from '@/lib/global'
 import { useRouter } from 'next/router'
 import { useImperativeHandle, useRef, useState } from 'react'
-import { useGlobal } from '@/lib/global'
 let lock = false
 
 const SearchInput = props => {
@@ -55,11 +55,11 @@ const SearchInput = props => {
       setShowClean(false)
     }
   }
-  function lockSearchInput () {
+  function lockSearchInput() {
     lock = true
   }
 
-  function unLockSearchInput () {
+  function unLockSearchInput() {
     lock = false
   }
 

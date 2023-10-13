@@ -1,7 +1,7 @@
-import BlogPostCard from './BlogPostCard'
-import PaginationNumber from './PaginationNumber'
 import BLOG from '@/blog.config'
+import BlogPostCard from './BlogPostCard'
 import BlogPostListEmpty from './BlogPostListEmpty'
+import PaginationNumber from './PaginationNumber'
 
 /**
  * 文章列表分页表格
@@ -18,14 +18,21 @@ const BlogPostListPage = ({ page = 1, posts = [], postCount, siteInfo }) => {
     return <BlogPostListEmpty />
   } else {
     return (
-      <div id="container" className='w-full'>
+      <div id="container" className="w-full">
         {/* 文章列表 */}
         <div className="space-y-6 px-2">
           {posts?.map(post => (
-            <BlogPostCard index={posts.indexOf(post)} key={post.id} post={post} siteInfo={siteInfo}/>
+            <BlogPostCard
+              index={posts.indexOf(post)}
+              key={post.id}
+              post={post}
+              siteInfo={siteInfo}
+            />
           ))}
         </div>
-        {showPagination && <PaginationNumber page={page} totalPage={totalPage} />}
+        {showPagination && (
+          <PaginationNumber page={page} totalPage={totalPage} />
+        )}
       </div>
     )
   }

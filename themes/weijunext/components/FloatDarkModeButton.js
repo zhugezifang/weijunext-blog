@@ -2,7 +2,7 @@ import { useGlobal } from '@/lib/global'
 import { saveDarkModeToCookies } from '@/themes/theme'
 import CONFIG from '../config'
 
-export default function FloatDarkModeButton () {
+export default function FloatDarkModeButton() {
   const { isDarkMode, updateDarkMode } = useGlobal()
 
   if (!CONFIG.WIDGET_DARK_MODE) {
@@ -22,10 +22,14 @@ export default function FloatDarkModeButton () {
   return (
     <div
       onClick={handleChangeDarkMode}
-      className={'justify-center items-center w-7 h-7 text-center transform hover:scale-105 duration-200'
+      className={
+        'justify-center items-center w-7 h-7 text-center transform hover:scale-105 duration-200'
       }
     >
-      <i id="darkModeButton" className={`${isDarkMode ? 'fa-sun' : 'fa-moon'} fas text-xs`}/>
+      <i
+        id="darkModeButton"
+        className={`${isDarkMode ? 'fa-sun' : 'fa-moon'} fas text-xs`}
+      />
     </div>
   )
 }
