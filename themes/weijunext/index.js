@@ -148,7 +148,9 @@ const LayoutPostList = props => {
     <LayoutBase {...props} className="pt-8">
       <div id="post-outer-wrapper" className="px-5 md:px-0">
         <CategoryBar {...props} />
+        <div className='mb-2'>
         <TagGroups tags={props.tagOptions} currentTag={props.tag} />
+        </div>
         <SlotBar {...props} />
         {BLOG.POST_LIST_STYLE === 'page'
           ? (
