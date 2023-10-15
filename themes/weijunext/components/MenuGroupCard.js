@@ -3,9 +3,9 @@ import Link from 'next/link'
 import CONFIG from '../config'
 
 const MenuGroupCard = props => {
-  const { postCount, categoryOptions, tagOptions } = props
+  const { allNavPages, categoryOptions, tagOptions } = props
   const { locale } = useGlobal()
-  const archiveSlot = <div className="text-center">{postCount}</div>
+  const archiveSlot = <div className="text-center">{allNavPages.length}</div>
   const categorySlot = (
     <div className="text-center">{categoryOptions?.length}</div>
   )
