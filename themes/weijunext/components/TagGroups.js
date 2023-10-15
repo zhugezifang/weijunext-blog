@@ -1,5 +1,4 @@
-import TagItemMini from './TagItemMini'
-
+import TagItemMini from './TagItemMini';
 /**
  * 标签组
  * @param tags

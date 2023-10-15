@@ -1,37 +1,39 @@
 import CONFIG from './config'
 
-import CommonHead from '@/components/CommonHead'
-import { useEffect, useRef } from 'react'
-import Footer from './components/Footer'
-import SideRight from './components/SideRight'
-import TopNav from './components/TopNav'
-import { useGlobal } from '@/lib/global'
 import BLOG from '@/blog.config'
-import { isBrowser } from '@/lib/utils'
-import BlogPostListPage from './components/BlogPostListPage'
-import BlogPostListScroll from './components/BlogPostListScroll'
-import { useRouter } from 'next/router'
-import Card from './components/Card'
-import RightFloatArea from './components/RightFloatArea'
-import SearchNav from './components/SearchNav'
-import BlogPostArchive from './components/BlogPostArchive'
-import { ArticleLock } from './components/ArticleLock'
-import PostHeader from './components/PostHeader'
-import JumpToCommentButton from './components/JumpToCommentButton'
-import TocDrawer from './components/TocDrawer'
-import TocDrawerButton from './components/TocDrawerButton'
 import Comment from '@/components/Comment'
+import CommonHead from '@/components/CommonHead'
+import replaceSearchResult from '@/components/Mark'
 import NotionPage from '@/components/NotionPage'
+import ShareBar from '@/components/ShareBar'
+import { useGlobal } from '@/lib/global'
+import { isBrowser } from '@/lib/utils'
+import { Transition } from '@headlessui/react'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useRef } from 'react'
 import ArticleAdjacent from './components/ArticleAdjacent'
 import ArticleCopyright from './components/ArticleCopyright'
+import { ArticleLock } from './components/ArticleLock'
 import ArticleRecommend from './components/ArticleRecommend'
-import ShareBar from '@/components/ShareBar'
-import TagItemMini from './components/TagItemMini'
-import Link from 'next/link'
+import BlogPostArchive from './components/BlogPostArchive'
+import BlogPostListPage from './components/BlogPostListPage'
+import BlogPostListScroll from './components/BlogPostListScroll'
+import Card from './components/Card'
+import CategoryBar from './components/CategoryBar'
+import Footer from './components/Footer'
+import JumpToCommentButton from './components/JumpToCommentButton'
+import PostHeader from './components/PostHeader'
+import RightFloatArea from './components/RightFloatArea'
+import SearchNav from './components/SearchNav'
+import SideRight from './components/SideRight'
 import SlotBar from './components/SlotBar'
-import { Transition } from '@headlessui/react'
+import TagGroups from './components/TagGroups'
+import TagItemMini from './components/TagItemMini'
+import TocDrawer from './components/TocDrawer'
+import TocDrawerButton from './components/TocDrawerButton'
+import TopNav from './components/TopNav'
 import { Style } from './style'
-import replaceSearchResult from '@/components/Mark'
 
 /**
  * 基础布局 采用左右两侧布局，移动端使用顶部导航栏
@@ -144,14 +146,18 @@ const LayoutIndex = props => {
 const LayoutPostList = props => {
   return (
     <LayoutBase {...props} className="pt-8">
-      <SlotBar {...props} />
-      {BLOG.POST_LIST_STYLE === 'page'
-        ? (
-        <BlogPostListPage {...props} />
-          )
-        : (
-        <BlogPostListScroll {...props} />
-          )}
+      <div id="post-outer-wrapper" className="px-5 md:px-0">
+        <CategoryBar {...props} />
+        <TagGroups tags={props.tagOptions} currentTag={props.tag} />
+        <SlotBar {...props} />
+        {BLOG.POST_LIST_STYLE === 'page'
+          ? (
+          <BlogPostListPage {...props} />
+            )
+          : (
+          <BlogPostListScroll {...props} />
+            )}
+      </div>
     </LayoutBase>
   )
 }
@@ -410,13 +416,14 @@ const LayoutTagIndex = props => {
 }
 
 export {
-  CONFIG as THEME_CONFIG,
-  LayoutIndex,
-  LayoutSearch,
-  LayoutArchive,
-  LayoutSlug,
   Layout404,
+  LayoutArchive,
   LayoutCategoryIndex,
+  LayoutIndex,
   LayoutPostList,
-  LayoutTagIndex
+  LayoutSearch,
+  LayoutSlug,
+  LayoutTagIndex,
+  CONFIG as THEME_CONFIG
 }
+// eslint-disable-next-line no-multiple-empty-lines

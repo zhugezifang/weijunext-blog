@@ -5,7 +5,8 @@ import CONFIG from '../config'
 const MenuGroupCard = props => {
   const { allNavPages, categoryOptions, tagOptions } = props
   const { locale } = useGlobal()
-  const archiveSlot = <div className="text-center">{allNavPages.length}</div>
+  // eslint-disable-next-line no-mixed-operators
+  const archiveSlot = <div className="text-center">{allNavPages && allNavPages.length || 0}</div>
   const categorySlot = (
     <div className="text-center">{categoryOptions?.length}</div>
   )

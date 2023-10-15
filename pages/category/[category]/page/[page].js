@@ -1,9 +1,8 @@
-import { getGlobalData } from '@/lib/notion/getNotionData'
-import React from 'react'
-import { useGlobal } from '@/lib/global'
 import BLOG from '@/blog.config'
-import { useRouter } from 'next/router'
+import { useGlobal } from '@/lib/global'
+import { getGlobalData } from '@/lib/notion/getNotionData'
 import { getLayoutByTheme } from '@/themes/theme'
+import { useRouter } from 'next/router'
 
 /**
  * 分类页
@@ -12,6 +11,7 @@ import { getLayoutByTheme } from '@/themes/theme'
  */
 
 export default function Category(props) {
+  console.log(3333, props);
   const { siteInfo } = props
   const { locale } = useGlobal()
   // 根据页面路径加载不同Layout文件
@@ -58,7 +58,7 @@ export async function getStaticPaths() {
   const from = 'category-paths'
   const { categoryOptions, allPages } = await getGlobalData({ from })
   const paths = []
-
+  console.log(22222, categoryOptions, allPages);
   categoryOptions?.forEach(category => {
     // 过滤状态类型
     const categoryPosts = allPages?.filter(page => page.type === 'Post' && page.status === 'Published').filter(post => post && post.category && post.category.includes(category.name))
