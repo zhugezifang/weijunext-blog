@@ -146,7 +146,7 @@ const TopNav = props => {
                 <div className='flex flex-shrink-0 justify-center items-center'>
                     <RandomPostButton {...props} />
                     <SearchButton {...props}/>
-                    {!JSON.parse(BLOG.THEME_SWITCH) && <div className='hidden md:block'><DarkModeButton {...props} /></div>}
+                    {!JSON.parse(BLOG.THEME_SWITCH) && <div className='hidden md:block'><DarkModeButton {...props} className='mt-0' /></div>}
                     <ReadingProgress />
 
                     {/* 移动端菜单按钮 */}
