@@ -3,6 +3,7 @@ import CONFIG from './config'
 import BLOG from '@/blog.config'
 import Comment from '@/components/Comment'
 import CommonHead from '@/components/CommonHead'
+import { AdSlot } from '@/components/GoogleAdsense'
 import replaceSearchResult from '@/components/Mark'
 import NotionPage from '@/components/NotionPage'
 import ShareBar from '@/components/ShareBar'
@@ -148,8 +149,8 @@ const LayoutPostList = props => {
     <LayoutBase {...props} className="pt-8">
       <div id="post-outer-wrapper" className="px-5 md:px-0">
         <CategoryBar {...props} />
-        <div className='mb-2'>
-        <TagGroups tags={props.tagOptions} currentTag={props.tag} />
+        <div className="mb-2">
+          <TagGroups tags={props.tagOptions} currentTag={props.tag} />
         </div>
         <SlotBar {...props} />
         {BLOG.POST_LIST_STYLE === 'page'
@@ -303,6 +304,9 @@ const LayoutSlug = props => {
             {/* 评论互动 */}
             <div className="duration-200 overflow-x-auto bg-white dark:bg-hexo-black-gray px-3">
               <Comment frontMatter={post} />
+              <div className="py-2">
+                <AdSlot />
+              </div>
             </div>
           </div>
         )}
