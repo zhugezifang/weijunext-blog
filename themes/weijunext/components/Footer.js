@@ -47,6 +47,12 @@ const Footer = ({ title }) => {
         <p className="text-xs pt-2 text-light-500 dark:text-gray-500">
           Thanks to{' '}
           <a
+            href="https://notion.so"
+            className="dark:text-gray-300"
+          >
+            Notion
+          </a> and{' '}
+          <a
             href="https://github.com/tangly1024/NotionNext"
             className="dark:text-gray-300"
           >
