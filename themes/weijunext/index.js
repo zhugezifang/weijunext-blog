@@ -118,6 +118,8 @@ const LayoutBase = props => {
           {/* 右侧栏 */}
           <SideRight {...props} />
         </div>
+
+        <AdSlot type="native" />
       </main>
 
       {/* 悬浮菜单 */}
@@ -304,9 +306,7 @@ const LayoutSlug = props => {
             {/* 评论互动 */}
             <div className="duration-200 overflow-x-auto bg-white dark:bg-hexo-black-gray px-3">
               <Comment frontMatter={post} />
-              <div className="py-2">
-                <AdSlot />
-              </div>
+              <div className="py-2">{/* <AdSlot /> */}</div>
             </div>
           </div>
         )}

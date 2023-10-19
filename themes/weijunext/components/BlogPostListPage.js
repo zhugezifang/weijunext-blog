@@ -1,4 +1,5 @@
 import BLOG from '@/blog.config'
+import { AdSlot } from '@/components/GoogleAdsense'
 import BlogPostCard from './BlogPostCard'
 import BlogPostListEmpty from './BlogPostListEmpty'
 import PaginationNumber from './PaginationNumber'
@@ -33,6 +34,7 @@ const BlogPostListPage = ({ page = 1, posts = [], postCount, siteInfo }) => {
         {showPagination && (
           <PaginationNumber page={page} totalPage={totalPage} />
         )}
+        <AdSlot type="flow" />
       </div>
     )
   }

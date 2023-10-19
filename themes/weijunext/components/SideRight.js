@@ -1,4 +1,5 @@
 import BLOG from '@/blog.config'
+import { AdSlot } from '@/components/GoogleAdsense'
 import Live2D from '@/components/Live2D'
 import { useGlobal } from '@/lib/global'
 import dynamic from 'next/dynamic'
@@ -74,6 +75,7 @@ export default function SideRight(props) {
       )}
 
       <Announcement post={notice} />
+      <AdSlot />
 
       {BLOG.COMMENT_WALINE_SERVER_URL && BLOG.COMMENT_WALINE_RECENT && (
         <HexoRecentComments />
