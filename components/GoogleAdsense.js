@@ -106,5 +106,7 @@ const AdSlot = ({ type = 'show' }) => {
   )
 }
 
-export { AdSlot }
-
+export {
+  AdSlot
+}
+// eslint-disable-next-line no-multiple-empty-lines
