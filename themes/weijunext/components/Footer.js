@@ -45,7 +45,7 @@ const Footer = ({ title }) => {
           {title} | {BLOG.BIO}
         </h1>
         <p className="text-xs pt-2 text-light-500 dark:text-gray-500">
-          Thank {' '}
+          Thank{' '}
           <a
             href="https://notion.so"
             className="dark:text-gray-300"
