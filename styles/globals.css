@@ -251,3 +251,15 @@ a.avatar-wrapper {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+/* 鼠标移入头像/logo，头像旋转 */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.rotate-start {
+  animation: rotate 1.5s linear infinite;
+}

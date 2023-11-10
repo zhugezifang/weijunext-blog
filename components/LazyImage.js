@@ -1,6 +1,6 @@
 import BLOG from '@/blog.config'
 import Head from 'next/head'
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 /**
  * 图片懒加载
@@ -32,8 +32,8 @@ export default function LazyImage({
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
+      entries => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             const lazyImage = entry.target
             lazyImage.src = src
@@ -84,12 +84,16 @@ export default function LazyImage({
   if (style) {
     imgProps.style = style
   }
-  return (<>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img {...imgProps} />
-        {/* 预加载 */}
-        {priority && <Head>
-            <link rel='preload' as='image' src={src} />
-        </Head>}
-    </>)
+  return (
+    <>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img {...imgProps} />
+      {/* 预加载 */}
+      {priority && (
+        <Head>
+          <link rel="preload" as="image" src={src} />
+        </Head>
+      )}
+    </>
+  )
 }

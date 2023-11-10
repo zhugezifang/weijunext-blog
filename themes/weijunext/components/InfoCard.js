@@ -13,6 +13,15 @@ import SocialButton from './SocialButton'
 export function InfoCard(props) {
   const { className, siteInfo } = props
   const router = useRouter()
+  const handleMouseOver = e => {
+    console.log(1)
+    e.target.classList.add('rotate-start')
+  }
+
+  const handleMouseOut = e => {
+    e.target.classList.remove('rotate-start')
+  }
+
   return (
     <Card className={className}>
       <div
@@ -21,13 +30,18 @@ export function InfoCard(props) {
           router.push('/')
         }}
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <LazyImage
-          src={siteInfo?.icon}
-          className="rounded-full"
-          width={120}
-          alt={BLOG.AUTHOR}
-        />
+        <div
+          className="w-32 h-32 rounded-full overflow-hidden inline-block"
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+        >
+          <LazyImage
+            src={siteInfo?.icon}
+            alt={BLOG.AUTHOR}
+            width={120}
+            className="w-full h-auto"
+          />
+        </div>
       </div>
       <div className="font-medium text-center text-xl pb-4">{BLOG.AUTHOR}</div>
       <div className="text-sm text-center">{BLOG.BIO}</div>
