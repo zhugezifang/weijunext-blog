@@ -44,9 +44,9 @@ export function InfoCard(props) {
           />
         </div>
       </div>
-      {/* <Caterpillar text={BLOG.AUTHOR} className="justify-center text-white -ml-px p-1 char" /> */}
+      {/* <Caterpillar text={BLOG.AUTHOR} className="justify-center text-white -ml-px p-1" /> */}
       <div className="font-medium text-center text-xl pb-4">{BLOG.AUTHOR}</div>
-      <Caterpillar text={BLOG.BIO} className="justify-center text-white -ml-px p-1 char" />
+      <Caterpillar text={BLOG.BIO} className="justify-center text-white -ml-px p-1" bgColor="bg-[#4472c4]" />
       {/* <div className="text-sm text-center">{BLOG.BIO}</div> */}
       <MenuGroupCard {...props} />
       <SocialButton />
