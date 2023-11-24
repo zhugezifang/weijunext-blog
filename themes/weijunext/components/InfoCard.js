@@ -1,4 +1,5 @@
 import BLOG from '@/blog.config'
+import Caterpillar from '@/components/Caterpillar'
 import LazyImage from '@/components/LazyImage'
 import { useRouter } from 'next/router'
 import Card from './Card'
@@ -43,8 +44,10 @@ export function InfoCard(props) {
           />
         </div>
       </div>
+      {/* <Caterpillar text={BLOG.AUTHOR} className="justify-center text-white -ml-px p-1 char" /> */}
       <div className="font-medium text-center text-xl pb-4">{BLOG.AUTHOR}</div>
-      <div className="text-sm text-center">{BLOG.BIO}</div>
+      <Caterpillar text={BLOG.BIO} className="justify-center text-white -ml-px p-1 char" />
+      {/* <div className="text-sm text-center">{BLOG.BIO}</div> */}
       <MenuGroupCard {...props} />
       <SocialButton />
     </Card>
