@@ -1,10 +1,10 @@
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useEffect, useState, useRef, useLayoutEffect } from 'react'
-import { useGlobal } from '@/lib/global'
-import { saveDarkModeToCookies, THEMES } from '@/themes/theme'
 import BLOG from '@/blog.config'
 import useWindowSize from '@/hooks/useWindowSize'
+import { useGlobal } from '@/lib/global'
+import { THEMES, saveDarkModeToCookies } from '@/themes/theme'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 /**
  * 自定义右键菜单
@@ -37,16 +37,22 @@ export default function CustomContextMenu(props) {
   }, [])
 
   useEffect(() => {
-    const handleContextMenu = (event) => {
+    const handleContextMenu = event => {
       event.preventDefault()
       // 计算点击位置加菜单宽高是否超出屏幕，如果超出则贴边弹出
-      const x = (event.clientX < windowSize.width - width) ? event.clientX : windowSize.width - width
-      const y = (event.clientY < windowSize.height - height) ? event.clientY : windowSize.height - height
+      const x =
+        event.clientX < windowSize.width - width
+          ? event.clientX
+          : windowSize.width - width
+      const y =
+        event.clientY < windowSize.height - height
+          ? event.clientY
+          : windowSize.height - height
       setPosition({ y: `${y}px`, x: `${x}px` })
       setShow(true)
     }
 
-    const handleClick = (event) => {
+    const handleClick = event => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShow(false)
       }
@@ -80,20 +86,21 @@ export default function CustomContextMenu(props) {
 
   function handleCopyLink() {
     const url = window.location.href
-    navigator.clipboard.writeText(url)
+    navigator.clipboard
+      .writeText(url)
       .then(() => {
         console.log('页面地址已复制')
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('复制页面地址失败:', error)
       })
     setShow(false)
   }
 
   /**
-  * 切换主题
-  */
-  function handeChangeTheme() {
+   * 切换主题
+   */
+  function handleChangeTheme() {
     const randomTheme = THEMES[Math.floor(Math.random() * THEMES.length)] // 从THEMES数组中 随机取一个主题
     const query = router.query
     query.theme = randomTheme
@@ -110,65 +117,107 @@ export default function CustomContextMenu(props) {
   }
 
   return (
-        <div
-            ref={menuRef}
-            style={{ top: position.y, left: position.x }}
-            className={`${show ? '' : 'invisible opacity-0'} select-none transition-opacity duration-200 fixed z-50`}
-        >
+    <div
+      ref={menuRef}
+      style={{ top: position.y, left: position.x }}
+      className={`${
+        show ? '' : 'invisible opacity-0'
+      } select-none transition-opacity duration-200 fixed z-50`}
+    >
+      {/* 菜单内容 */}
+      <div className="rounded-xl w-52 dark:hover:border-yellow-600 bg-white dark:bg-[#040404] dark:text-gray-200 dark:border-gray-600 p-3 border drop-shadow-lg flex-col duration-300 transition-colors">
+        {/* 顶部导航按钮 */}
+        <div className="flex justify-between">
+          <i
+            onClick={handleBack}
+            className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-left"
+          ></i>
+          <i
+            onClick={handleForward}
+            className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-right"
+          ></i>
+          <i
+            onClick={handleRefresh}
+            className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-rotate-right"
+          ></i>
+          <i
+            onClick={handleScrollTop}
+            className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-up"
+          ></i>
+        </div>
 
-            {/* 菜单内容 */}
-            <div className='rounded-xl w-52 dark:hover:border-yellow-600 bg-white dark:bg-[#040404] dark:text-gray-200 dark:border-gray-600 p-3 border drop-shadow-lg flex-col duration-300 transition-colors'>
-                {/* 顶部导航按钮 */}
-                <div className='flex justify-between'>
-                    <i onClick={handleBack} className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-left"></i>
-                    <i onClick={handleForward} className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-right"></i>
-                    <i onClick={handleRefresh} className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-rotate-right"></i>
-                    <i onClick={handleScrollTop} className="hover:bg-blue-600 hover:text-white px-2 py-2 text-center w-8 rounded cursor-pointer fa-solid fa-arrow-up"></i>
-                </div>
+        <hr className="my-2 border-dashed" />
 
-                <hr className='my-2 border-dashed' />
+        {/* 跳转导航按钮 */}
+        <div className="w-full px-2">
+          <div
+            onClick={handleJumpToRandomPost}
+            title={locale.MENU.WALK_AROUND}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            <i className="fa-solid fa-podcast mr-2" />
+            <div className="whitespace-nowrap">{locale.MENU.WALK_AROUND}</div>
+          </div>
 
-                {/* 跳转导航按钮 */}
-                <div className='w-full px-2'>
+          <Link
+            href="/category"
+            title={locale.MENU.CATEGORY}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            <i className="fa-solid fa-square-minus mr-2" />
+            <div className="whitespace-nowrap">{locale.MENU.CATEGORY}</div>
+          </Link>
 
-                    <div onClick={handleJumpToRandomPost} title={locale.MENU.WALK_AROUND} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        <i className="fa-solid fa-podcast mr-2" />
-                        <div className='whitespace-nowrap'>{locale.MENU.WALK_AROUND}</div>
-                    </div>
+          <Link
+            href="/tag"
+            title={locale.MENU.TAGS}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            <i className="fa-solid fa-tag mr-2" />
+            <div className="whitespace-nowrap">{locale.MENU.TAGS}</div>
+          </Link>
+        </div>
 
-                    <Link href='/category' title={locale.MENU.CATEGORY} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        <i className="fa-solid fa-square-minus mr-2" />
-                        <div className='whitespace-nowrap'>{locale.MENU.CATEGORY}</div>
-                    </Link>
+        <hr className="my-2 border-dashed" />
 
-                    <Link href='/tag' title={locale.MENU.TAGS} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        <i className="fa-solid fa-tag mr-2" />
-                        <div className='whitespace-nowrap'>{locale.MENU.TAGS}</div>
-                    </Link>
+        {/* 功能按钮 */}
+        <div className="w-full px-2">
+          <div
+            onClick={handleCopyLink}
+            title={locale.MENU.COPY_URL}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            <i className="fa-solid fa-arrow-up-right-from-square mr-2" />
+            <div className="whitespace-nowrap">{locale.MENU.COPY_URL}</div>
+          </div>
 
-                </div>
-
-                <hr className='my-2 border-dashed' />
-
-                {/* 功能按钮 */}
-                <div className='w-full px-2'>
-
-                    <div onClick={handleCopyLink} title={locale.MENU.COPY_URL} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        <i className="fa-solid fa-arrow-up-right-from-square mr-2" />
-                        <div className='whitespace-nowrap'>{locale.MENU.COPY_URL}</div>
-                    </div>
-
-                    <div onClick={handleChangeDarkMode} title={isDarkMode ? locale.MENU.LIGHT_MODE : locale.MENU.DARK_MODE} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        {isDarkMode ? <i className="fa-regular fa-sun mr-2" /> : <i className="fa-regular fa-moon mr-2" />}
-                        <div className='whitespace-nowrap'> {isDarkMode ? locale.MENU.LIGHT_MODE : locale.MENU.DARK_MODE}</div>
-                    </div>
-                    <div onClick={handeChangeTheme} title={locale.MENU.THEME_SWITCH} className='w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all'>
-                        <i className="fa-solid fa-palette mr-2" />
-                        <div className='whitespace-nowrap'>{locale.MENU.THEME_SWITCH}</div>
-                    </div>
-                </div>
-
+          <div
+            onClick={handleChangeDarkMode}
+            title={isDarkMode ? locale.MENU.LIGHT_MODE : locale.MENU.DARK_MODE}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            {isDarkMode
+              ? (
+              <i className="fa-regular fa-sun mr-2" />
+                )
+              : (
+              <i className="fa-regular fa-moon mr-2" />
+                )}
+            <div className="whitespace-nowrap">
+              {' '}
+              {isDarkMode ? locale.MENU.LIGHT_MODE : locale.MENU.DARK_MODE}
             </div>
-        </div >
+          </div>
+          <div
+            onClick={handleChangeTheme}
+            title={locale.MENU.THEME_SWITCH}
+            className="w-full px-2 h-10 flex justify-start items-center flex-nowrap cursor-pointer hover:bg-blue-600 hover:text-white rounded-lg duration-200 transition-all"
+          >
+            <i className="fa-solid fa-palette mr-2" />
+            <div className="whitespace-nowrap">{locale.MENU.THEME_SWITCH}</div>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }
