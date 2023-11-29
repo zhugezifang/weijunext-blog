@@ -6,7 +6,11 @@ const MenuGroupCard = props => {
   const { allNavPages, categoryOptions, tagOptions } = props
   const { locale } = useGlobal()
   // eslint-disable-next-line no-mixed-operators
-  const archiveSlot = <div className="text-center">{allNavPages && allNavPages.length || 0}</div>
+  const archiveSlot = (
+    <div className="text-center">
+      {(allNavPages && allNavPages.length) || 0}
+    </div>
+  )
   const categorySlot = (
     <div className="text-center">{categoryOptions?.length}</div>
   )
@@ -50,7 +54,11 @@ const MenuGroupCard = props => {
                 'py-1.5 my-1 px-2 duration-300 text-base justify-center items-center cursor-pointer'
               }
             >
-              <div className="w-full items-center justify-center hover:scale-105 duration-200 transform dark:hover:text-indigo-400 hover:text-indigo-600">
+              {/* <div className="w-full items-center justify-center hover:scale-105 duration-200 transform dark:hover:text-indigo-400 hover:text-indigo-600">
+                <div className="text-center">{link.name}</div>
+                <div className="text-center font-semibold">{link.slot}</div>
+              </div> */}
+              <div className='card-neumorphic'>
                 <div className="text-center">{link.name}</div>
                 <div className="text-center font-semibold">{link.slot}</div>
               </div>

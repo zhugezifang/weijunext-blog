@@ -263,3 +263,19 @@ a.avatar-wrapper {
 .rotate-start {
   animation: rotate 1.5s linear infinite;
 }
+
+.card-neumorphic {
+  @apply border-2 border-white rounded-lg text-gray-900 bg-white py-2 px-4 transition-all shadow-neumorphic;
+}
+
+.card-neumorphic:hover {
+  @apply scale-100;
+}
+
+.dark .card-neumorphic {
+  @apply border-gray-800 bg-gray-800 text-white shadow-neumorphic-dark;
+}
+
+.dark .card-neumorphic:hover {
+  @apply shadow-neumorphic-dark;
+}
