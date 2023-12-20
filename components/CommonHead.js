@@ -67,6 +67,7 @@ const CommonHead = ({ meta, children }) => {
       {BLOG.COMMENT_WEBMENTION.ENABLE &&
         BLOG.COMMENT_WEBMENTION.AUTH !== '' && (
           <link href={BLOG.COMMENT_WEBMENTION.AUTH} rel="me" />
+          // eslint-disable-next-line indent
         )}
 
       {JSON.parse(BLOG.ANALYTICS_BUSUANZI_ENABLE) && (
