@@ -18,6 +18,7 @@ const CommonHead = ({ meta, children }) => {
   return (
     <Head>
       <title>{title}</title>
+      <meta name="baidu-site-verification" content="codeva-mmLa7nfjLj" />
       <meta name="theme-color" content={BLOG.BACKGROUND_DARK} />
       <meta
         name="viewport"
@@ -66,7 +67,7 @@ const CommonHead = ({ meta, children }) => {
       {BLOG.COMMENT_WEBMENTION.ENABLE &&
         BLOG.COMMENT_WEBMENTION.AUTH !== '' && (
           <link href={BLOG.COMMENT_WEBMENTION.AUTH} rel="me" />
-      )}
+        )}
 
       {JSON.parse(BLOG.ANALYTICS_BUSUANZI_ENABLE) && (
         <meta name="referrer" content="no-referrer-when-downgrade" />
