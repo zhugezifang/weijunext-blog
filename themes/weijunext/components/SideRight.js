@@ -68,13 +68,15 @@ export default function SideRight(props) {
           <TagGroups tags={tags} currentTag={currentTag} />
         </Card>
       )}
+      
+      <Announcement post={notice} />
+
       {CONFIG.WIDGET_LATEST_POSTS && latestPosts && latestPosts.length > 0 && (
         <Card>
           <LatestPostsGroup {...props} />
         </Card>
       )}
 
-      <Announcement post={notice} />
       <AdSlot />
 
       {BLOG.COMMENT_WALINE_SERVER_URL && BLOG.COMMENT_WALINE_RECENT && (
