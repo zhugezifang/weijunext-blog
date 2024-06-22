@@ -45,13 +45,13 @@ const Footer = ({ title }) => {
           {title} | {BLOG.BIO}
         </h1>
         <p className="text-xs pt-2 text-light-500 dark:text-gray-500">
-          Thank{' '}
+          {' '}
           <a
-            href="https://notion.so"
+            href="https://www.xhs-download.online/"
             className="dark:text-gray-300"
           >
-            Notion
-          </a> and{' '}
+            小红书去水印图片视频下载
+          </a>{' '}
           <a
             href="https://lastpass-generator.online/"
             className="dark:text-gray-300"
