@@ -53,10 +53,10 @@ const Footer = ({ title }) => {
             Notion
           </a> and{' '}
           <a
-            href="https://github.com/tangly1024/NotionNext"
+            href="https://lastpass-generator.online/"
             className="dark:text-gray-300"
           >
-            NotionNext {BLOG.VERSION}
+            LastPass Password Generator
           </a>
           .
         </p>
