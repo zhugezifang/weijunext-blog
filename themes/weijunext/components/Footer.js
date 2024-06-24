@@ -58,7 +58,13 @@ const Footer = ({ title }) => {
           >
             LastPass Password Generator
           </a>
-          .
+          {' '}
+          <a
+            href="https://www.viggle-ai.online/"
+            className="dark:text-gray-300"
+          >
+            viggle-ai
+          </a>
         </p>
       </span>
       <br />
