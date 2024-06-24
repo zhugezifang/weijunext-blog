@@ -63,7 +63,7 @@ const Footer = ({ title }) => {
             href="https://www.viggle-ai.online/"
             className="dark:text-gray-300"
           >
-            viggle-ai
+            Viggle-AI
           </a>
         </p>
       </span>
