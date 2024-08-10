@@ -65,6 +65,13 @@ const Footer = ({ title }) => {
           >
             Viggle-AI
           </a>
+          {' '}
+          <a
+            href="https://bottleneck-calculators.online/"
+            className="dark:text-gray-300"
+          >
+            Bottleneck Calculator
+          </a>
         </p>
       </span>
       <br />
