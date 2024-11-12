@@ -72,6 +72,13 @@ const Footer = ({ title }) => {
           >
             Bottleneck Calculator
           </a>
+          {' '}
+          <a
+            href="https://geometrydashjp.online/"
+            className="dark:text-gray-300"
+          >
+            ジオメトリーダッシュ
+          </a>
         </p>
       </span>
       <br />
