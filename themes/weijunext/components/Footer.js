@@ -60,10 +60,10 @@ const Footer = ({ title }) => {
           </a>
           {' '}
           <a
-            href="https://www.viggle-ai.online/"
+            href="https://templatejp.online/"
             className="dark:text-gray-300"
           >
-            Viggle-AI
+            無料のテンプレート
           </a>
           {' '}
           <a
